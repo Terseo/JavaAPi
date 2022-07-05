@@ -12,19 +12,38 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 
 public class ApiCore { 
 	
-	public static ValidatableResponse PostLogin(String filePath, String url) throws FileNotFoundException, IOException, ParseException {
+	public static ValidatableResponse Post(String filePath, String url) throws FileNotFoundException, IOException, ParseException {
 		
 		JSONParser parserLogin = new JSONParser();
-		String login = new File(filePath).getAbsolutePath();
-		Object objLogin = (JSONObject) parserLogin.parse(new FileReader(login));
+		String file = new File(filePath).getAbsolutePath();
+		Object objLogin = (JSONObject) parserLogin.parse(new FileReader(file));
 		RestAssured.baseURI = url;
 
-		ValidatableResponse response = given().when().body(objLogin).post().then();
+		ValidatableResponse response = given().when().contentType(ContentType.JSON).body(objLogin).post().then();
 		
 		return response;
+	}
+	
+	public static ValidatableResponse put(String filePath, String url) throws FileNotFoundException, IOException, ParseException {
+		
+		JSONParser parserLogin = new JSONParser();
+		String file = new File(filePath).getAbsolutePath();
+		Object objLogin = (JSONObject) parserLogin.parse(new FileReader(file));
+		RestAssured.baseURI = url;
+
+		ValidatableResponse response = given().when().contentType(ContentType.JSON).body(objLogin).put().then();
+		
+		return response;
+	}
+	
+	public static ValidatableResponse Get(String url) {
+		ValidatableResponse response = given().when().get(url).then();
+		return response;
+		
 	}
 }
