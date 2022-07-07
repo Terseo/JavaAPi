@@ -22,7 +22,7 @@ public class POSTAPI {
 	public void PostLogin() throws FileNotFoundException, IOException, ParseException {
 		String url = "https://reqres.in/api/login";
 
-		ValidatableResponse responseLogin = ApiCore.Post("src\\test\\java\\com\\unosquare\\Login.json", url);
+		ValidatableResponse responseLogin = ApiCore.Post(".\\json\\Login.json", url);
 
 		Reporter.log("Reponse Body " + responseLogin.extract().path(""));
 		Reporter.log("Reponse Code " + responseLogin.extract().statusCode());
@@ -36,7 +36,7 @@ public class POSTAPI {
 	public void PostInvalidLogin() throws FileNotFoundException, IOException, ParseException {
 		String url = "https://reqres.in/api/login";
 
-		ValidatableResponse responseLogin = ApiCore.Post("src\\test\\java\\com\\unosquare\\InvalidLogin.json", url);
+		ValidatableResponse responseLogin = ApiCore.Post(".\\json\\InvalidLogin.json", url);
 
 		Reporter.log("Reponse Body " + responseLogin.extract().path(""));
 		Reporter.log("Reponse Code " + responseLogin.extract().statusCode());
@@ -50,7 +50,7 @@ public class POSTAPI {
 	public void PostUsers() throws FileNotFoundException, IOException, ParseException {
 		String url = "https://reqres.in/api/users";
 
-		ValidatableResponse responseUsers = ApiCore.Post("src\\test\\java\\com\\unosquare\\Users.json", url);
+		ValidatableResponse responseUsers = ApiCore.Post(".\\json\\Users.json", url);
 
 		Reporter.log("Reponse Body " + responseUsers.extract().path(""));
 		Reporter.log("Reponse Code " + responseUsers.extract().statusCode());
@@ -65,7 +65,7 @@ public class POSTAPI {
 	public void PostRegister() throws FileNotFoundException, IOException, ParseException {
 		String url = "https://reqres.in/api/register";
 
-		ValidatableResponse responseUsers = ApiCore.Post("src\\test\\java\\com\\unosquare\\Register.json", url);
+		ValidatableResponse responseUsers = ApiCore.Post(".\\json\\Register.json", url);
 
 		Reporter.log("Reponse Body " + responseUsers.extract().path(""));
 		Reporter.log("Reponse Code " + responseUsers.extract().statusCode());

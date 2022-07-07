@@ -21,7 +21,7 @@ public class PUTAPI {
 	public void PutUsers() throws FileNotFoundException, IOException, ParseException {
 		String url = "https://reqres.in/api/users/2";
 
-		ValidatableResponse responseUser = ApiCore.Post("src\\test\\java\\com\\unosquare\\UpdateUsers.json", url);
+		ValidatableResponse responseUser = ApiCore.Post(".\\json\\UpdateUsers.json", url);
 
 		Reporter.log("Reponse Body " + responseUser.extract().path(""));
 		Reporter.log("Reponse Code " + responseUser.extract().statusCode());
